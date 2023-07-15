@@ -35,9 +35,26 @@ async function main() {
     case "ios": body.style.backgroundColor = "#eeeeee"; break
   }
 
-  getUserProfile()
+
+  if (!liff.isInClient()) {
+    if (liff.isLoggedIn()) {
+      btnLogIn.style.display = "none"
+      btnLogOut.style.display = "block"
+      getUserProfile()
+    } else {
+      btnLogIn.style.display = "block"
+      btnLogOut.style.display = "none"
+    }
+  } else {
+    getUserProfile()
+  }
+ 
+
 
 }
+
+
+
 main()
 
 async function getUserProfile() {
@@ -47,4 +64,14 @@ async function getUserProfile() {
   statusMessage.innerHTML = "<b>statusMessage:</b> " + profile.statusMessage
   displayName.innerHTML = "<b>displayName:</b> " + profile.displayName
   email.innerHTML = "<b>email:</b> " + liff.getDecodedIDToken().email
+}
+
+
+btnLogIn.onclick = () => {
+  liff.login()
+}
+
+btnLogOut.onclick = () => {
+  liff.logout()
+  window.location.reload()
 }
