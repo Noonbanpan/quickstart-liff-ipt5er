@@ -26,14 +26,15 @@ const friendShip = document.getElementById("friendShip")
 
 async function main() {
   // Initialize LIFF app)
-  await liff.init({ liffId: "2000139824-QBWEJmgW" })
+  await liff.init({ liffId:"2000139824-QBWEJmgW" })
   // Try a LIFF function
 
   // Try a LIFF function
-switch (liff.getOS()) {
-  case "android": body.style.backgroundColor = "#d1f5d3"; break
-  case "ios": body.style.backgroundColor = "#eeeeee"; break
-}
+  switch (liff.getOS()) {
+    case "android": body.style.backgroundColor = "#d1f5d3"; break
+    case "ios": body.style.backgroundColor = "#eeeeee"; break
+  }
+
 
 }
 main()
